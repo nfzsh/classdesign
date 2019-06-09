@@ -1,5 +1,6 @@
 <template>
   <div>
+    <add />
     <table>
       <thead>
         <tr>
@@ -24,15 +25,24 @@
 import bus from "@/util/Bus";
 export default {
   components: {
+    add: () => import("@/super_manager/view/add"),
     deleted: () => import("@/super_manager/view/deleted")
   },
+  data: () => ({
+    user: [
+      {
+        no: null,
+        name: null
+      }
+    ]
+  }),
   created() {
-    bus.$on(bus.courses, data => {
-      this.courses = data;
+    bus.$on(bus.user, data => {
+      this.user = data;
     });
   },
   beforeDestroy() {
-    bus.$off(bus.courses);
+    bus.$off(bus.user);
   }
 };
 </script>
