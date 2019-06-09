@@ -6,9 +6,9 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: "/super_manager/mian",
+      path: "/mian",
       props: true,
-      component: () => import("@/super_manager/App.vue"),
+      component: () => import("@/super_manager/view/main.vue"),
       children: [
         {
           path: "/deleted",
