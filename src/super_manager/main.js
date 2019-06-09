@@ -11,5 +11,5 @@ if (token == null) {
   new Vue({
     router,
     render: h => h(App)
-  }).$mount("#app");
+  }).$mount("#super_manager");
 }
