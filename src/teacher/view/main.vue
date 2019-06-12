@@ -10,7 +10,7 @@
     <br />
     <button @click="updata">修改用户信息</button>
     <template v-if="updatashow">
-      <updata />
+      <updata v-bind:user="user" />
     </template>
   </div>
 </template>
@@ -28,8 +28,14 @@ export default {
       password: null,
       intro: null,
       mobile: null
-    }
+    },
+    updatashow: false
   }),
+  methods: {
+    updata() {
+      this.updatashow = !this.updatashow;
+    }
+  },
   created() {
     bus.$on(bus.user, data => {
       this.user = data;

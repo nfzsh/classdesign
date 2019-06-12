@@ -12,7 +12,7 @@
       电话：
       <input type="text" v-model="user.mobile" />
     </label>
-    <button @click="updata">修改</button>
+    <button @click="updata">提交</button>
   </div>
 </template>
 
