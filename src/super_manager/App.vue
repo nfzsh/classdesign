@@ -1,5 +1,5 @@
 <template>
-  <div id="super_mnger">
+  <div id="super_manager">
     <super_main />
     <alert />
   </div>

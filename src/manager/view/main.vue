@@ -16,6 +16,12 @@
         <td>
           <deleted v-bind:no="u.no" />
         </td>
+        <td>
+          <button @click="updata">修改</button>
+        </td>
+        <td v-if="updatashow">
+          <updata v-bind:user="u" />
+        </td>
       </tr>
     </table>
   </div>
@@ -25,8 +31,9 @@
 import bus from "@/util/Bus";
 export default {
   components: {
-    add: () => import("@/super_manager/view/add"),
-    deleted: () => import("@/super_manager/view/deleted")
+    add: () => import("@/manager/view/add"),
+    deleted: () => import("@/manager/view/deleted"),
+    updata: () => import("@/manager/view/updata")
   },
   data: () => ({
     users: [
@@ -37,8 +44,14 @@ export default {
         intro: null,
         mobile: null
       }
-    ]
+    ],
+    updatashow: false
   }),
+  methods: {
+    updata() {
+      this.updatashow = !this.updatashow;
+    }
+  },
   created() {
     bus.$on(bus.users, data => {
       this.users = data;

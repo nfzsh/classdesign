@@ -9,5 +9,5 @@ if (token == null) {
 } else {
   new Vue({
     render: h => h(App)
-  }).$mount("#manager");
+  }).$mount("#teacher");
 }
