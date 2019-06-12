@@ -1,6 +1,8 @@
 <template>
   <div>
     <add />
+    <br />
+    普通管理员信息管理：
     <table>
       <thead>
         <tr>

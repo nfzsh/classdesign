@@ -1,6 +1,8 @@
 <template>
   <div>
     <add />
+    <br />
+    教师信息管理：
     <table>
       <thead>
         <tr>
@@ -24,6 +26,9 @@
         </td>
       </tr>
     </table>
+
+    <br />
+    添加监考信息：
   </div>
 </template>
 

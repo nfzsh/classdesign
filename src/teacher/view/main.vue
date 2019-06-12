@@ -1,12 +1,15 @@
 <template>
   <div>
-    员工号：{{ user.no }}
-    <br />
-    姓名：{{ user.name }}
-    <br />
-    简介：{{ user.intro }}
-    <br />
-    电话：{{ user.mobile }}
+    <div>
+      员工号：{{ user.no }}
+      <br />
+      姓名：{{ user.name }}
+      <br />
+      简介：{{ user.intro }}
+      <br />
+      电话：{{ user.mobile }}
+      <br />
+    </div>
     <br />
     <button @click="updata">修改用户信息</button>
     <template v-if="updatashow">
