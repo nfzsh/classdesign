@@ -1,10 +1,12 @@
 <template>
   <div id="app">
-    账号：<input v-model="user.no" />
-    <br />
-    密码：<input type="password" v-model="user.password" />
-    <br />
-    <button type="button" @click="login">登录</button>
+    <form ref="login">
+      账号：<input v-model="user.no" />
+      <br />
+      密码：<input type="password" v-model="user.password" />
+      <br />
+      <button type="button" @click="login">登录</button>
+    </form>
     <alert />
   </div>
 </template>

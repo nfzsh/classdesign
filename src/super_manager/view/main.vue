@@ -9,11 +9,11 @@
           <th>name</th>
         </tr>
       </thead>
-      <tr v-for="(u, index) in user" :key="index">
+      <tr v-for="(u, index) in users" :key="index">
         <td>{{ index + 1 }}</td>
         <td>{{ u.no }}</td>
         <td>{{ u.name }}</td>
-        <td>
+        <td v-bind:no="u.no">
           <deleted v-bind:no="u.no" />
         </td>
       </tr>
@@ -29,20 +29,23 @@ export default {
     deleted: () => import("@/super_manager/view/deleted")
   },
   data: () => ({
-    user: [
+    users: [
       {
         no: null,
-        name: null
+        name: null,
+        password: null,
+        intro: null,
+        mobile: null
       }
     ]
   }),
   created() {
-    bus.$on(bus.user, data => {
-      this.user = data;
+    bus.$on(bus.users, data => {
+      this.users = data;
     });
   },
   beforeDestroy() {
-    bus.$off(bus.user);
+    bus.$off(bus.users);
   }
 };
 </script>

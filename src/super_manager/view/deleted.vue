@@ -10,7 +10,12 @@ export default {
   props: ["no"],
   methods: {
     deleted() {
-      deleted(this.no);
+      let con = confirm(`确定删除：${this.no}`);
+      if (con == true) {
+        deleted(this.no);
+      } else {
+        alert("已取消！");
+      }
     }
   }
 };
