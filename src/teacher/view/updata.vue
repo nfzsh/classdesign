@@ -12,7 +12,7 @@
       电话：
       <input type="text" v-model="user.mobile" />
     </label>
-    <button @click="updata">提交</button>
+    <button @click="sub">提交</button>
   </div>
 </template>
 
@@ -21,17 +21,8 @@ import { updata } from "@/teacher/js/teacher";
 export default {
   props: ["user"],
   methods: {
-    updata() {
+    sub() {
       updata(this.user);
-      this.$nextTick(() => {
-        this.user = {
-          no: null,
-          name: null,
-          password: null,
-          intro: null,
-          mobile: null
-        };
-      });
     }
   }
 };

@@ -15,11 +15,16 @@
     <template v-if="updatashow">
       <updata v-bind:user="user" />
     </template>
+    <br />
+    <div>
+      {{ formatDate(date) }}
+    </div>
   </div>
 </template>
 
 <script>
 import bus from "@/util/Bus";
+import { formatDate } from "@/js/date.js";
 export default {
   components: {
     updata: () => import("@/teacher/view/updata")
@@ -32,13 +37,24 @@ export default {
       intro: null,
       mobile: null
     },
-    updatashow: false
+    updatashow: false,
+    date: 231644131688
   }),
   methods: {
     updata() {
       this.updatashow = !this.updatashow;
+    },
+    formatDate(time) {
+      var date = new Date(time);
+      return formatDate(date, "yyyy-MM-dd hh : mm");
     }
   },
+  // filters: {
+  //   formatDate(time) {
+  //     var date = new Date(time);
+  //     return formatDate(date, "yyyy-MM-dd hh : mm");
+  //   }
+  // },
   created() {
     bus.$on(bus.user, data => {
       this.user = data;

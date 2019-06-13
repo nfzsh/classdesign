@@ -41,15 +41,6 @@ export default {
   methods: {
     add() {
       add(this.user);
-      this.$nextTick(() => {
-        this.user = {
-          no: null,
-          name: null,
-          password: null,
-          intro: null,
-          mobile: null
-        };
-      });
     }
   }
 };
