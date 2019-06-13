@@ -35,7 +35,8 @@ export default {
       name: null,
       password: null,
       intro: null,
-      mobile: null
+      mobile: null,
+      invigilate: null
     }
   }),
   methods: {

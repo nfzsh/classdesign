@@ -29,11 +29,16 @@
 
     <br />
     监考信息管理：
+    <br />
+    添加监考信息：
+    <br />
+    <input type="datetime-local" v-model="date" />
   </div>
 </template>
 
 <script>
 import bus from "@/util/Bus";
+import { formatDate } from "@/js/date.js";
 export default {
   components: {
     add: () => import("@/manager/view/add"),
@@ -47,14 +52,22 @@ export default {
         name: null,
         password: null,
         intro: null,
-        mobile: null
+        mobile: null,
+        invigilate: null
       }
     ],
-    updatashow: false
+    updatashow: false,
+    date: null
   }),
   methods: {
     updata() {
       this.updatashow = !this.updatashow;
+    }
+  },
+  filters: {
+    formatDate(time) {
+      var date = new Date(time);
+      return formatDate(date, "yyyy-MM-dd hh : mm");
     }
   },
   created() {
