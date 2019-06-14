@@ -4,6 +4,8 @@ export default new Vue({
   data: () => ({
     e: "exception",
     user: "user",
-    users: "users"
+    users: "users",
+    invigilate: "invigilate",
+    invigilates: "invigilates"
   })
 });

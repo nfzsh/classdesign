@@ -17,7 +17,7 @@
     </template>
     <br />
     <div>
-      {{ formatDate(date) }}
+      {{ date | formatDate }}
     </div>
   </div>
 </template>
@@ -44,18 +44,18 @@ export default {
   methods: {
     updata() {
       this.updatashow = !this.updatashow;
-    },
+    }
+    // formatDate(time) {
+    //   var date = new Date(time);
+    //   return formatDate(date, "yyyy-MM-dd hh:mm:ss");
+    // }
+  },
+  filters: {
     formatDate(time) {
       var date = new Date(time);
-      return formatDate(date, "yyyy-MM-dd hh:mm:ss");
+      return formatDate(date, "yyyy-MM-dd hh : mm");
     }
   },
-  // filters: {
-  //   formatDate(time) {
-  //     var date = new Date(time);
-  //     return formatDate(date, "yyyy-MM-dd hh : mm");
-  //   }
-  // },
   created() {
     bus.$on(bus.user, data => {
       this.user = data;
