@@ -6,6 +6,7 @@ export default new Vue({
     user: "user",
     users: "users",
     invigilate: "invigilate",
-    invigilates: "invigilates"
+    invigilates: "invigilates",
+    userinvigilates: "userinvigilates"
   })
 });

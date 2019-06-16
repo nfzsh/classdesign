@@ -6,6 +6,7 @@ export function init() {
     setTimeout(() => {
       bus.$emit(bus.users, response.data.users);
       bus.$emit(bus.invigilates, response.data.invigilates);
+      bus.$emit(bus.userinvigilates, response.data.userinvigilates);
     }, 500);
   });
 }
@@ -63,5 +64,35 @@ export function updatainvigilate(invigilate) {
       alert(res);
       bus.$emit(bus.invigilates, response.data.invigilates);
     }, 500);
+  });
+}
+
+export function distributeinvigilate(uno, invigilate) {
+  axios
+    .post(`/manager/distributeinvigilate/${uno}`, invigilate)
+    .then(response => {
+      let con = confirm(`${response.data.res}是否继续？`);
+      if (con == true) {
+        isdistributeinvigilate(uno, invigilate);
+      } else {
+        alert("已取消！");
+      }
+    });
+}
+
+export function isdistributeinvigilate(uno, invigilate) {
+  axios
+    .post(`/manager/isdistributeinvigilate/${uno}`, invigilate)
+    .then(response => {
+      bus.$emit(bus.users, response.data.users);
+      alert(response.data.res);
+    });
+}
+
+export function redistribute(invigilate) {
+  axios.post("/manager/redistribute", invigilate).then(response => {
+    alert(response.data.res);
+    bus.$emit(bus.invigilates, response.data.invigilates);
+    bus.$emit(bus.userinvigilates, response.data.userinvigilates);
   });
 }

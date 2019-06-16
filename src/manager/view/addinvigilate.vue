@@ -21,11 +21,6 @@
       <input type="datetime-local" v-model="invigilate.startTime" />
     </label>
     <br />
-    <label>
-      结束时间：{{ invigilate.endTime | formatDate }}
-      <input type="datetime-local" v-model="invigilate.endTime" />
-    </label>
-    <br />
     <button @click="addinvigilate">添加</button>
   </div>
 </template>
@@ -39,8 +34,7 @@ export default {
       no: null,
       course: null,
       place: null,
-      startTime: null,
-      endTime: null
+      startTime: null
     }
   }),
   methods: {

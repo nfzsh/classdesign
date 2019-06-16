@@ -51,15 +51,38 @@
         <td>{{ i.place }}</td>
         <td>{{ i.startTime | formatDate }}</td>
         <td>{{ i.endTime | formatDate }}</td>
+        <td>{{ i.status }}</td>
         <td>
           <deletedinvigilate v-bind:ino="i.no" />
         </td>
         <td>
           <button @click="updatainvigilate">修改</button>
         </td>
+        <td>
+          <button @click="distributeinvigilate">分配</button>
+        </td>
         <td v-if="updatainvigilateshow">
           <updatainvigilate v-bind:invigilate="i" />
         </td>
+        <td v-if="distributeinvigilateshow">
+          <distributeinvigilate v-bind:invigilate="i" v-bind:users="users" />
+        </td>
+      </tr>
+    </table>
+
+    监考分配：
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>user-no</th>
+          <th>invigilate-no</th>
+        </tr>
+      </thead>
+      <tr v-for="(ui, index) in userinvigilates" :key="index">
+        <td>{{ index + 1 }}</td>
+        <td>{{ ui.user.no }}</td>
+        <td>{{ ui.invigilate.no }}</td>
       </tr>
     </table>
   </div>
@@ -75,7 +98,8 @@ export default {
     updata: () => import("@/manager/view/updata"),
     addinvigilate: () => import("@/manager/view/addinvigilate"),
     deletedinvigilate: () => import("@/manager/view/deletedinvigilate"),
-    updatainvigilate: () => import("@/manager/view/updatainvigilate")
+    updatainvigilate: () => import("@/manager/view/updatainvigilate"),
+    distributeinvigilate: () => import("@/manager/view/distributeinvigilate")
   },
   data: () => ({
     users: [
@@ -94,12 +118,33 @@ export default {
         course: null,
         place: null,
         startTime: null,
-        endTime: null
+        endTime: null,
+        status: null
+      }
+    ],
+    userinvigilates: [
+      {
+        user: {
+          no: null,
+          name: null,
+          password: null,
+          intro: null,
+          mobile: null,
+          invigilate: null
+        },
+        invigilates: {
+          no: null,
+          course: null,
+          place: null,
+          startTime: null,
+          endTime: null,
+          status: null
+        }
       }
     ],
     updatashow: false,
     updatainvigilateshow: false,
-    date: null
+    distributeinvigilateshow: false
   }),
   methods: {
     updata() {
@@ -107,6 +152,9 @@ export default {
     },
     updatainvigilate() {
       this.updatainvigilateshow = !this.updatainvigilateshow;
+    },
+    distributeinvigilate() {
+      this.distributeinvigilateshow = !this.distributeinvigilateshow;
     }
   },
   filters: {
@@ -122,10 +170,14 @@ export default {
     bus.$on(bus.invigilates, data => {
       this.invigilates = data;
     });
+    bus.$on(bus.userinvigilates, data => {
+      this.userinvigilates = data;
+    });
   },
   beforeDestroy() {
     bus.$off(bus.users);
     bus.$off(bus.invigilates);
+    bus.$off(bus.userinvigilates);
   }
 };
 </script>
