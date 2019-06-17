@@ -4,24 +4,24 @@
     <br />
     <label>
       工号：
-      <input type="text" v-model="invigilate.userNum" />
+      <input type="text" v-model="exam.userNum" />
     </label>
     <label>
       课程：
-      <input type="text" v-model="invigilate.name" />
+      <input type="text" v-model="exam.name" />
     </label>
     <label>
       考场：
-      <input type="text" v-model="invigilate.classRoom" />
+      <input type="text" v-model="exam.classRoom" />
     </label>
     <br />
     <label>
-      开始时间：{{ invigilate.startTime | formatDate }}
-      <input type="datetime-local" v-model="invigilate.startTime" />
+      开始时间：{{ exam.startTime | formatDate }}
+      <input type="datetime-local" v-model="exam.startTime" />
     </label>
     <label>
-      结束时间：{{ invigilate.endTime | formatDate }}
-      <input type="datetime-local" v-model="invigilate.endTime" />
+      结束时间：{{ exam.endTime | formatDate }}
+      <input type="datetime-local" v-model="exam.endTime" />
     </label>
     <br />
     <button @click="addinvigilate">添加</button>
@@ -33,7 +33,7 @@ import { addinvigilate } from "@/manager/js/manager";
 import { formatDate } from "@/js/date";
 export default {
   data: () => ({
-    invigilate: {
+    exam: {
       name: null,
       classRoom: null,
       userNum: null,
@@ -43,10 +43,10 @@ export default {
   }),
   methods: {
     addinvigilate() {
-      if (this.invigilate.startTime > this.invigilate.endTime) {
+      if (this.exam.startTime > this.exam.endTime) {
         alert("结束时间必须大于开始时间");
       } else {
-        addinvigilate(this.invigilate);
+        addinvigilate(this.exam);
       }
     }
   },

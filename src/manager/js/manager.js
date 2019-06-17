@@ -2,19 +2,19 @@ import axios from "@/util/MyAxios";
 import bus from "@/util/Bus";
 
 export function init() {
-  axios.get("/manager/main").then(response => {
+  axios.get("/admin/selectlist").then(response => {
     setTimeout(() => {
-      bus.$emit(bus.users, response.data.users);
-      bus.$emit(bus.invigilates, response.data.invigilates);
-      bus.$emit(bus.userinvigilates, response.data.userinvigilates);
-    }, 500);
+      //bus.$emit(bus.users, response.data.users);
+      bus.$emit(bus.exams, response.data.exams);
+      //bus.$emit(bus.userexams, response.data.userexamms);
+    }, 1000);
   });
 }
 
 export function add(user) {
-  axios.post("/manager/add", user).then(response => {
+  axios.post("/admin/adduser", user).then(response => {
     setTimeout(() => {
-      alert(response.data.res);
+      alert("添加成功");
       bus.$emit(bus.users, response.data.users);
     }, 500);
   });

@@ -5,8 +5,8 @@ export default new Vue({
     e: "exception",
     user: "user",
     users: "users",
-    invigilate: "invigilate",
-    invigilates: "invigilates",
-    userinvigilates: "userinvigilates"
+    exam: "exam",
+    exams: "exams",
+    userexams: "userexams"
   })
 });

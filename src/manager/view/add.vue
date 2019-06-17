@@ -26,6 +26,10 @@
       电话：
       <input type="text" v-model="user.phonenum" />
     </label>
+    <label>
+      权限：
+      <input type="text" v-model="user.authority" />
+    </label>
     <button @click="add">添加</button>
   </div>
 </template>
@@ -37,10 +41,11 @@ export default {
     user: {
       number: null,
       name: null,
+      pro: null,
       password: null,
       intro: null,
       phonenum: null,
-      exam: null
+      authority: null
     }
   }),
   methods: {

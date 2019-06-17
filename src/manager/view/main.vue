@@ -15,7 +15,7 @@
         <td>{{ index + 1 }}</td>
         <td>{{ u.number }}</td>
         <td>{{ u.name }}</td>
-        <td>{{ u.invigilate }}</td>
+        <td>{{ u.exam }}</td>
         <td>
           <deleted v-bind:number="u.number" />
         </td>
@@ -37,16 +37,20 @@
           <th>#</th>
           <th>number</th>
           <th>course</th>
+          <th>status</th>
+          <th>noOfVacancy</th>
           <th>place</th>
           <th>startTime</th>
           <th>endTime</th>
         </tr>
       </thead>
-      <tr v-for="(i, index) in invigilates" :key="index">
+      <tr v-for="(i, index) in exams" :key="index">
         <td>{{ index + 1 }}</td>
-        <td>{{ i.number }}</td>
-        <td>{{ i.course }}</td>
-        <td>{{ i.place }}</td>
+        <td>{{ i.id }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.flag }}</td>
+        <td>{{ i.userNum }}</td>
+        <td>{{ i.classRoom }}</td>
         <td>{{ i.startTime | formatDate }}</td>
         <td>{{ i.endTime | formatDate }}</td>
         <td>
@@ -105,37 +109,38 @@ export default {
         name: null,
         password: null,
         intro: null,
-        mobile: null,
-        invigilate: null
+        phonenum: null,
+        exam: null
       }
     ],
-    invigilates: [
+    exams: [
       {
-        number: null,
-        course: null,
-        place: null,
-        startTime: null,
-        endTime: null,
-        status: null
+        classRoom: "丹青301",
+        endTime: "2019-06-20 11:30",
+        flag: 0,
+        id: 2,
+        insertTime: "2019-06-15T21:03:09",
+        name: "高等数学",
+        startTime: "2019-06-20 10:00",
+        userNum: 1
       }
     ],
-    userinvigilates: [
+    userexams: [
       {
         user: {
           number: null,
           name: null,
           password: null,
           intro: null,
-          mobile: null,
-          invigilate: null
+          phonenum: null,
+          exam: null
         },
-        invigilates: {
+        exams: {
           number: null,
-          course: null,
-          place: null,
+          name: null,
+          classRoom: null,
           startTime: null,
-          endTime: null,
-          status: null
+          endTime: null
         }
       }
     ],
@@ -164,17 +169,17 @@ export default {
     bus.$on(bus.users, data => {
       this.users = data;
     });
-    bus.$on(bus.invigilates, data => {
-      this.invigilates = data;
+    bus.$on(bus.exams, data => {
+      this.exams = data;
     });
-    bus.$on(bus.userinvigilates, data => {
-      this.userinvigilates = data;
+    bus.$on(bus.userexams, data => {
+      this.userexams = data;
     });
-  },
-  beforeDestroy() {
-    bus.$off(bus.users);
-    bus.$off(bus.invigilates);
-    bus.$off(bus.userinvigilates);
   }
+  /*beforeDestroy() {
+    bus.$off(bus.users);
+    bus.$off(bus.exams);
+    bus.$off(bus.userexams);
+  }*/
 };
 </script>

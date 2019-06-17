@@ -2,6 +2,7 @@
   <div id="super_manager">
     <super_main />
     <alert />
+    <a href="./manager.html">更改考试</a>
   </div>
 </template>
 

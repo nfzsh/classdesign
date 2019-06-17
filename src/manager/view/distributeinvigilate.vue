@@ -12,18 +12,18 @@
 import { distributeinvigilate } from "@/manager/js/manager";
 import { redistribute } from "@/manager/js/manager";
 export default {
-  props: ["invigilate", "users"],
+  props: ["exam", "users"],
   data: () => ({
     unumber: null
   }),
   methods: {
     distributeinvigilate() {
-      distributeinvigilate(this.unumber, this.invigilate);
+      distributeinvigilate(this.unumber, this.exam);
     },
     redistribute() {
-      let con = confirm(`是否重新分配:${this.invigilate.no}？`);
+      let con = confirm(`是否重新分配:${this.exam.no}？`);
       if (con == true) {
-        redistribute(this.invigilate);
+        redistribute(this.exam);
       } else {
         alert("已取消！");
       }
