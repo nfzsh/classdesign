@@ -1,9 +1,7 @@
 <template>
   <div>
-    <select v-model="uno">
-      <option v-for="(u, index) in users" :key="index">
-        {{ u.no }}
-      </option>
+    <select v-model="unumber">
+      <option v-for="(u, index) in users" :key="index">{{ u.number }}</option>
     </select>
     <button @click="distributeinvigilate">提交</button>
     <button @click="redistribute">重新分配</button>
@@ -16,11 +14,11 @@ import { redistribute } from "@/manager/js/manager";
 export default {
   props: ["invigilate", "users"],
   data: () => ({
-    uno: null
+    unumber: null
   }),
   methods: {
     distributeinvigilate() {
-      distributeinvigilate(this.uno, this.invigilate);
+      distributeinvigilate(this.unumber, this.invigilate);
     },
     redistribute() {
       let con = confirm(`是否重新分配:${this.invigilate.no}？`);

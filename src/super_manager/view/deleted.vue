@@ -7,12 +7,12 @@
 <script>
 import { deleted } from "@/super_manager/js/super_manager";
 export default {
-  props: ["no"],
+  props: ["number"],
   methods: {
     deleted() {
-      let con = confirm(`确定删除：${this.no}`);
+      let con = confirm(`确定删除：${this.number}`);
       if (con == true) {
-        deleted(this.no);
+        deleted(this.number);
       } else {
         alert("已取消！");
       }

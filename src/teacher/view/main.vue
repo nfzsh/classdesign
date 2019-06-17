@@ -1,13 +1,17 @@
 <template>
   <div>
     <div>
-      员工号：{{ user.no }}
+      工号：{{ user.number }}
       <br />
       姓名：{{ user.name }}
       <br />
+      专业：{{ user.pro }}
+      <br />
       简介：{{ user.intro }}
       <br />
-      电话：{{ user.mobile }}
+      电话：{{ user.phonenum }}
+      <br />
+      密码：{{ user.password }}
       <br />
     </div>
     <br />
@@ -15,27 +19,25 @@
     <template v-if="updatashow">
       <updata v-bind:user="user" />
     </template>
-    <br />
-    监考信息：
+    <br />监考信息：
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>no</th>
-          <th>course</th>
-          <th>place</th>
-          <th>startTime</th>
-          <th>endTime</th>
+          <th>课程名称</th>
+          <th>地点</th>
+          <th>监考人数</th>
+          <th>开始时间</th>
+          <th>结束时间</th>
         </tr>
       </thead>
       <tr v-for="(i, index) in invigilates" :key="index">
         <td>{{ index + 1 }}</td>
-        <td>{{ i.no }}</td>
-        <td>{{ i.course }}</td>
-        <td>{{ i.place }}</td>
+        <td>{{ i.name }}</td>
+        <td>{{ i.classRoom }}</td>
+        <td>{{ i.userNmu }}</td>
         <td>{{ i.startTime | formatDate }}</td>
         <td>{{ i.endTime | formatDate }}</td>
-        <td>{{ i.status }}</td>
       </tr>
     </table>
   </div>
@@ -50,7 +52,7 @@ export default {
   },
   data: () => ({
     user: {
-      no: null,
+      number: null,
       name: null,
       password: null,
       intro: null,
@@ -59,12 +61,11 @@ export default {
     },
     invigilates: [
       {
-        no: null,
-        course: null,
-        place: null,
+        name: null,
+        classRoom: null,
+        userNum: null,
         startTime: null,
-        endTime: null,
-        status: null
+        endTime: null
       }
     ],
     updatashow: false

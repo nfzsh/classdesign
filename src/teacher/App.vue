@@ -13,8 +13,8 @@ export default {
     alert: () => import("@/components/AlertDialog")
   },
   created() {
-    let no = sessionStorage.getItem("no");
-    init(no);
+    let number = sessionStorage.getItem("number");
+    init(number);
   }
 };
 </script>

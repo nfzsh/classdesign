@@ -18,6 +18,7 @@
 
 <script>
 import { updata } from "@/teacher/js/teacher";
+
 export default {
   props: ["user"],
   methods: {

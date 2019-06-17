@@ -7,13 +7,11 @@ export function login(user) {
     if (token != null) {
       sessionStorage.setItem("token", token);
       sessionStorage.setItem("role", role);
-      if (sessionStorage.getItem("role") == "SUPER_MANAGER") {
+      if (sessionStorage.getItem("role") == "ADMIN_ROLE") {
         window.location.href = "./super_manager.html";
-      } else if (sessionStorage.getItem("role") == "MANAGER") {
-        window.location.href = "./manager.html";
-      } else if (sessionStorage.getItem("role") == "TEACHER") {
-        sessionStorage.removeItem("no");
-        sessionStorage.setItem("no", user.no);
+      } else if (sessionStorage.getItem("role") == "STUDENT_ROLE") {
+        sessionStorage.removeItem("number");
+        sessionStorage.setItem("number", user.number);
         window.location.href = "./teacher.html";
       } else {
         alert("出现未知的错误！");

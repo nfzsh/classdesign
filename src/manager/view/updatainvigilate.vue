@@ -2,7 +2,7 @@
   <div>
     <label>
       场次：
-      <input type="text" v-model="invigilate.no" />
+      <input type="text" v-model="invigilate.number" />
     </label>
     <label>
       课程：

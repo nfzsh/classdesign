@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <form ref="login">
-      账号：<input v-model="user.no" />
-      <br />
-      密码：<input type="password" v-model="user.password" />
+      账号：
+      <input v-model="user.number" />
+      <br />密码：
+      <input type="password" v-model="user.password" />
       <br />
       <button type="button" @click="login">登录</button>
     </form>
@@ -20,7 +21,7 @@ export default {
   },
   data: () => ({
     user: {
-      no: null,
+      number: null,
       password: null
     }
   }),
@@ -29,7 +30,7 @@ export default {
       login(this.user);
       this.$nextTick(() => {
         this.user = {
-          no: null,
+          number: null,
           password: null
         };
       });

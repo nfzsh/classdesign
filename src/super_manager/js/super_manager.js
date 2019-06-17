@@ -16,7 +16,7 @@ export function add(user) {
       alert(res);
       bus.$emit(bus.users, response.data.users);
       if (res == "管理员已存在！") {
-        let con = confirm(`是否更新：${user.no}（员工号和密码不能更新）`);
+        let con = confirm(`是否更新：${user.number}（工号和密码不能更新）`);
         if (con == true) {
           updata(user);
         } else {
@@ -27,8 +27,8 @@ export function add(user) {
   });
 }
 
-export function deleted(no) {
-  axios.post(`/super_manager/deleted/${no}`).then(response => {
+export function deleted(number) {
+  axios.post(`/super_manager/deleted/${number}`).then(response => {
     setTimeout(() => {
       alert(response.data.res);
       bus.$emit(bus.users, response.data.users);

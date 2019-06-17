@@ -3,8 +3,8 @@
     <label>添加普通管理员</label>
     <br />
     <label>
-      员工号：
-      <input type="text" v-model="user.no" />
+      工号：
+      <input type="text" v-model="user.number" />
     </label>
     <label>
       姓名：
@@ -20,7 +20,7 @@
     </label>
     <label>
       电话：
-      <input type="text" v-model="user.mobile" />
+      <input type="text" v-model="user.phonenum" />
     </label>
     <button @click="add">添加</button>
   </div>
@@ -31,11 +31,11 @@ import { add } from "@/super_manager/js/super_manager";
 export default {
   data: () => ({
     user: {
-      no: null,
+      number: null,
       name: null,
       password: null,
       intro: null,
-      mobile: null,
+      phonenum: null,
       invigilate: null
     }
   }),

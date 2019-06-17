@@ -1,22 +1,21 @@
 <template>
   <div>
     <add />
-    <br />
-    普通管理员信息管理：
+    <br />普通管理员信息管理：
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>no</th>
+          <th>number</th>
           <th>name</th>
         </tr>
       </thead>
       <tr v-for="(u, index) in users" :key="index">
         <td>{{ index + 1 }}</td>
-        <td>{{ u.no }}</td>
+        <td>{{ u.number }}</td>
         <td>{{ u.name }}</td>
         <td>
-          <deleted v-bind:no="u.no" />
+          <deleted v-bind:number="u.number" />
         </td>
       </tr>
     </table>
@@ -33,11 +32,11 @@ export default {
   data: () => ({
     users: [
       {
-        no: null,
+        number: null,
         name: null,
         password: null,
         intro: null,
-        mobile: null,
+        phonenum: null,
         invigilate: null
       }
     ]

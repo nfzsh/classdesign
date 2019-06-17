@@ -20,8 +20,8 @@ export function add(user) {
   });
 }
 
-export function deleted(no) {
-  axios.post(`/manager/deleted/${no}`).then(response => {
+export function deleted(number) {
+  axios.post(`/manager/deleted/${number}`).then(response => {
     setTimeout(() => {
       alert(response.data.res);
       bus.$emit(bus.users, response.data.users);
@@ -48,8 +48,8 @@ export function addinvigilate(invigilate) {
   });
 }
 
-export function deletedinvigilate(ino) {
-  axios.post(`/manager/deletedinvigilate/${ino}`).then(response => {
+export function deletedinvigilate(inumber) {
+  axios.post(`/manager/deletedinvigilate/${inumber}`).then(response => {
     setTimeout(() => {
       alert(response.data.res);
       bus.$emit(bus.invigilates, response.data.invigilates);
@@ -67,22 +67,22 @@ export function updatainvigilate(invigilate) {
   });
 }
 
-export function distributeinvigilate(uno, invigilate) {
+export function distributeinvigilate(unumber, invigilate) {
   axios
-    .post(`/manager/distributeinvigilate/${uno}`, invigilate)
+    .post(`/manager/distributeinvigilate/${unumber}`, invigilate)
     .then(response => {
       let con = confirm(`${response.data.res}是否继续？`);
       if (con == true) {
-        isdistributeinvigilate(uno, invigilate);
+        isdistributeinvigilate(unumber, invigilate);
       } else {
         alert("已取消！");
       }
     });
 }
 
-export function isdistributeinvigilate(uno, invigilate) {
+export function isdistributeinvigilate(unumber, invigilate) {
   axios
-    .post(`/manager/isdistributeinvigilate/${uno}`, invigilate)
+    .post(`/manager/isdistributeinvigilate/${unumber}`, invigilate)
     .then(response => {
       bus.$emit(bus.users, response.data.users);
       alert(response.data.res);

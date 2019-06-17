@@ -7,12 +7,12 @@
 <script>
 import { deletedinvigilate } from "@/manager/js/manager";
 export default {
-  props: ["ino"],
+  props: ["inumber"],
   methods: {
     deletedinvigilate() {
-      let con = confirm(`确定删除：${this.ino}`);
+      let con = confirm(`确定删除：${this.inumber}`);
       if (con == true) {
-        deletedinvigilate(this.ino);
+        deletedinvigilate(this.inumber);
       } else {
         alert("已取消！");
       }

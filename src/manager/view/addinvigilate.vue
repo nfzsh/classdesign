@@ -1,24 +1,27 @@
 <template>
   <div>
-    <br />
-    添加监考信息：
+    <br />添加监考信息：
     <br />
     <label>
-      场次：
-      <input type="text" v-model="invigilate.no" />
+      工号：
+      <input type="text" v-model="invigilate.userNum" />
     </label>
     <label>
       课程：
-      <input type="text" v-model="invigilate.course" />
+      <input type="text" v-model="invigilate.name" />
     </label>
     <label>
       考场：
-      <input type="text" v-model="invigilate.place" />
+      <input type="text" v-model="invigilate.classRoom" />
     </label>
     <br />
     <label>
       开始时间：{{ invigilate.startTime | formatDate }}
       <input type="datetime-local" v-model="invigilate.startTime" />
+    </label>
+    <label>
+      结束时间：{{ invigilate.endTime | formatDate }}
+      <input type="datetime-local" v-model="invigilate.endTime" />
     </label>
     <br />
     <button @click="addinvigilate">添加</button>
@@ -31,10 +34,11 @@ import { formatDate } from "@/js/date";
 export default {
   data: () => ({
     invigilate: {
-      no: null,
-      course: null,
-      place: null,
-      startTime: null
+      name: null,
+      classRoom: null,
+      userNum: null,
+      startTime: null,
+      endTime: null
     }
   }),
   methods: {

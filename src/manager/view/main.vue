@@ -1,24 +1,23 @@
 <template>
   <div>
     <add />
-    <br />
-    教师信息管理：
+    <br />教师信息管理：
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>no</th>
+          <th>number</th>
           <th>name</th>
           <th>invigilate</th>
         </tr>
       </thead>
       <tr v-for="(u, index) in users" :key="index">
         <td>{{ index + 1 }}</td>
-        <td>{{ u.no }}</td>
+        <td>{{ u.number }}</td>
         <td>{{ u.name }}</td>
         <td>{{ u.invigilate }}</td>
         <td>
-          <deleted v-bind:no="u.no" />
+          <deleted v-bind:number="u.number" />
         </td>
         <td>
           <button @click="updata">修改</button>
@@ -31,13 +30,12 @@
 
     <br />
     <addinvigilate />
-    <br />
-    监考信息管理：
+    <br />监考信息管理：
     <table>
       <thead>
         <tr>
           <th>#</th>
-          <th>no</th>
+          <th>number</th>
           <th>course</th>
           <th>place</th>
           <th>startTime</th>
@@ -46,14 +44,13 @@
       </thead>
       <tr v-for="(i, index) in invigilates" :key="index">
         <td>{{ index + 1 }}</td>
-        <td>{{ i.no }}</td>
+        <td>{{ i.number }}</td>
         <td>{{ i.course }}</td>
         <td>{{ i.place }}</td>
         <td>{{ i.startTime | formatDate }}</td>
         <td>{{ i.endTime | formatDate }}</td>
-        <td>{{ i.status }}</td>
         <td>
-          <deletedinvigilate v-bind:ino="i.no" />
+          <deletedinvigilate v-bind:inumber="i.number" />
         </td>
         <td>
           <button @click="updatainvigilate">修改</button>
@@ -75,14 +72,14 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>user-no</th>
-          <th>invigilate-no</th>
+          <th>user-number</th>
+          <th>invigilate-number</th>
         </tr>
       </thead>
       <tr v-for="(ui, index) in userinvigilates" :key="index">
         <td>{{ index + 1 }}</td>
-        <td>{{ ui.user.no }}</td>
-        <td>{{ ui.invigilate.no }}</td>
+        <td>{{ ui.user.number }}</td>
+        <td>{{ ui.invigilate.number }}</td>
       </tr>
     </table>
   </div>
@@ -104,7 +101,7 @@ export default {
   data: () => ({
     users: [
       {
-        no: null,
+        number: null,
         name: null,
         password: null,
         intro: null,
@@ -114,7 +111,7 @@ export default {
     ],
     invigilates: [
       {
-        no: null,
+        number: null,
         course: null,
         place: null,
         startTime: null,
@@ -125,7 +122,7 @@ export default {
     userinvigilates: [
       {
         user: {
-          no: null,
+          number: null,
           name: null,
           password: null,
           intro: null,
@@ -133,7 +130,7 @@ export default {
           invigilate: null
         },
         invigilates: {
-          no: null,
+          number: null,
           course: null,
           place: null,
           startTime: null,

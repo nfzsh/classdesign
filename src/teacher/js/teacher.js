@@ -1,8 +1,8 @@
 import axios from "@/util/MyAxios";
 import bus from "@/util/Bus";
 
-export function init(no) {
-  axios.get(`/teacher/main/${no}`).then(response => {
+export function init(number) {
+  axios.get(`/teacher/main/${number}`).then(response => {
     setTimeout(() => {
       alert(response.data.res);
       bus.$emit(bus.user, response.data.user);
